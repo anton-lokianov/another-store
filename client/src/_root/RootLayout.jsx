@@ -1,20 +1,18 @@
 import Header from "../components/Header";
-import SideBar from "./../components/SideBar";
 import { Outlet } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../globalState/auth-store";
 
 const RootLayout = () => {
-  const { token, user } = useAuthStore();
+  const { token } = useAuthStore();
   return (
     <>
-      {!token && !user ? (
+      {!token ? (
         <Navigate to="/sign-in" />
       ) : (
         <div className="w-full">
           <Header />
-          <SideBar />
-          <section>
+          <section className="">
             <Outlet />
           </section>
         </div>

@@ -1,3 +1,5 @@
+import img from "./src/assets/hero-bg.png";
+
 export default {
   content: [
     "./index.html",
@@ -8,6 +10,9 @@ export default {
     extend: {
       container: {
         padding: "4rem",
+      },
+      backgroundImage: {
+        hero: "url('./src/assets/hero-bg.png')",
       },
 
       screens: {

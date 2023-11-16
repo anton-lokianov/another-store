@@ -1,33 +1,18 @@
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import { CgLogIn } from "react-icons/cg";
-import { useLoginFormValid } from "../validations/login-from-valid";
+import { useLoginFormValid } from "../lib/validations/loginForm-valid";
 import { FiUser, FiLock } from "react-icons/fi";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { getUser, login } from "../lib/utils/auth-api";
 import { useState, useEffect } from "react";
-import { useAuthStore } from "../globalState/auth-store";
+import { useAppQueries } from "../lib/react-query/queries";
 
 const SignIn = () => {
   const { register, handleSubmit, errors, reset, validationSchema, setValue } =
     useLoginFormValid();
   const [randomUserId, setRandomUserId] = useState(null);
-  const { setLogin } = useAuthStore();
-
-  const { data: user, isPending: generatePending } = useQuery({
-    queryKey: ["user", randomUserId],
-    queryFn: () => getUser(randomUserId),
-    enabled: !!randomUserId,
-  });
-
-  const { mutate: authenticate, isPending: isAuthPending } = useMutation({
-    mutationKey: "auth",
-    mutationFn: (user) => login(user),
-    onSuccess: (data) => {
-      const { username, firstName, lastName, image, id, token } = data;
-      setLogin({ username, firstName, lastName, image, id }, token);
-    },
-  });
+  const { loginQuery, getUserQuery } = useAppQueries();
+  const { mutate: authenticate, isPending: isAuthPending } = loginQuery();
+  const { data: user, isPending: isUserPending } = getUserQuery(randomUserId);
 
   const handleGenerateRandomUser = () => {
     const newRandomId = Math.floor(Math.random() * 100) + 1;
@@ -79,7 +64,7 @@ const SignIn = () => {
           type="button"
           onClick={handleGenerateRandomUser}
           text={
-            randomUserId && generatePending
+            randomUserId && isUserPending
               ? "Generating.."
               : "Generate Random User"
           }

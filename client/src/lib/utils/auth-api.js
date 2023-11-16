@@ -3,7 +3,7 @@ import axios from "axios";
 const AUTH_URL = "https://dummyjson.com/auth/login";
 const USER_URL = "https://dummyjson.com/users";
 
-export const login = async (credentials) => {
+export const fetchLogin = async (credentials) => {
   try {
     const response = await axios.post(AUTH_URL, credentials);
     if (response.status === 200) {
@@ -15,7 +15,7 @@ export const login = async (credentials) => {
   }
 };
 
-export const getUser = async (id) => {
+export const fetchGetUserById = async (id) => {
   try {
     const response = await axios.get(`${USER_URL}/${id}`);
     if (response.status === 200) {

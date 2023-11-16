@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_API = "https://dummyjson.com/products";
 
-export const getProducts = async () => {
+export const fetchGetProducts = async () => {
   try {
     const response = await axios.get(`${BASE_API}?skip=0&limit=100`);
     if (response.status === 200) {
@@ -17,7 +17,7 @@ export const getProducts = async () => {
   }
 };
 
-export const deleteProduct = async (id) => {
+export const fetchDeleteProduct = async (id) => {
   try {
     const response = await axios.delete(`${BASE_API}/${id}`);
     if (response.status === 200) {
@@ -32,7 +32,7 @@ export const deleteProduct = async (id) => {
   }
 };
 
-export const getProductById = async (id) => {
+export const fetchGetProductById = async (id) => {
   try {
     const response = await axios.get(`${BASE_API}/${id}`);
     if (response.status === 200) {
@@ -47,7 +47,7 @@ export const getProductById = async (id) => {
   }
 };
 
-export const updateProduct = async (id, data) => {
+export const fetchUpdateProduct = async (id, data) => {
   try {
     const response = await axios.put(`${BASE_API}/${id}`, data);
     if (response.status === 200) {
@@ -62,7 +62,7 @@ export const updateProduct = async (id, data) => {
   }
 };
 
-export const createProduct = async (data) => {
+export const fetchCreateProduct = async (data) => {
   try {
     const response = await axios.post(`${BASE_API}/add`, data);
     if (response.status === 200) {
@@ -77,7 +77,7 @@ export const createProduct = async (data) => {
   }
 };
 
-export const searchProducts = async (query) => {
+export const fetchSearchProducts = async (query) => {
   try {
     const response = await axios.get(`${BASE_API}/search?q=${query}`);
     if (response.status === 200) {
@@ -92,7 +92,7 @@ export const searchProducts = async (query) => {
   }
 };
 
-export const getProductCategories = async () => {
+export const fetchGetProductCategories = async () => {
   try {
     const response = await axios.get(`${BASE_API}/categories`);
     if (response.status === 200) {
@@ -107,7 +107,7 @@ export const getProductCategories = async () => {
   }
 };
 
-export const getProductsByCategory = async (category) => {
+export const fetchGetProductsByCategory = async (category) => {
   try {
     const response = await axios.get(`${BASE_API}/category/${category}`);
     if (response.status === 200) {
