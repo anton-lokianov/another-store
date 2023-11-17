@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../globalState/auth-store";
 import SignIn from "./SignIn";
-import loginImg from "../assets/login.png";
+import loginImg from "../assets/hero-bg.png";
 
 const AuthLayout = () => {
   const { token, user } = useAuthStore();

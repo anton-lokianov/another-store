@@ -11,7 +11,7 @@ export const useAppQueries = () => {
   const { setLogin } = useAuthStore();
 
   const loginQuery = () => {
-    const { mutate, isPending, isError } = useMutation({
+    return useMutation({
       mutationKey: "auth",
       mutationFn: (user) => fetchLogin(user),
       onSuccess: (data) => {
@@ -19,45 +19,35 @@ export const useAppQueries = () => {
         setLogin({ username, firstName, lastName, image, id, email }, token);
       },
     });
-
-    return { mutate, isPending, isError };
   };
 
   const getUserQuery = (userId) => {
-    const { data, isPending, isError } = useQuery({
+    return useQuery({
       queryKey: ["user", userId],
       queryFn: () => fetchGetUserById(userId),
       enabled: !!userId,
     });
-
-    return { data, isPending, isError };
   };
 
   const getProductCategoriesQuery = () => {
-    const { data, isPending, isError } = useQuery({
+    return useQuery({
       queryKey: ["productCategories"],
       queryFn: fetchGetProductCategories,
     });
-
-    return { data, isPending, isError };
   };
 
   const getProductsByCategoryQuery = (category) => {
-    const { data, isPending, isError } = useQuery({
+    return useQuery({
       queryKey: ["product", category],
       queryFn: fetchGetProductsByCategory(category),
     });
-
-    return { data, isPending, isError };
   };
 
   const getProductsQuery = () => {
-    const { data, isPending, isError } = useQuery({
+    return useQuery({
       queryKey: ["products"],
       queryFn: fetchGetProducts,
     });
-
-    return { data, isPending, isError };
   };
 
   return {

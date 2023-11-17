@@ -30,7 +30,7 @@ const SignIn = () => {
   });
 
   return (
-    <div className="p-10 flex flex-col items-center border border-gray-500 rounded-sm bg-slate-700 w-full max-w-sm">
+    <div className="p-10 flex flex-col items-center border border-gray-500 rounded-sm bg-slate-700 w-full max-w-sm shadow-sm shadow-black">
       <h1 className="text-2xl font-bold">Sign In</h1>
       <CgLogIn className="h-14 w-14 text-indigo-500 mt-2" />
       <form onSubmit={submit} className="flex flex-col gap-3 w-full">

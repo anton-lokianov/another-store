@@ -11,9 +11,7 @@ export default {
       container: {
         padding: "4rem",
       },
-      backgroundImage: {
-        hero: "url('./src/assets/hero-bg.png')",
-      },
+      backgroundImage: {},
 
       screens: {
         xs: "480px",
