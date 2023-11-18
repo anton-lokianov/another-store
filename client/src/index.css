@@ -13,11 +13,11 @@ body,
 
 @layer base {
   .base_btn {
-    @apply inline-block w-full rounded shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] 
+    @apply inline-block rounded shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] 
     hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] 
     focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] 
     active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] 
-    px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal 
+    text-sm font-medium leading-normal 
     transition duration-150 ease-in-out focus:outline-none focus:ring-0;
   }
 

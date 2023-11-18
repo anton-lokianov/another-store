@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TERipple } from "tw-elements-react";
 
-const Button = ({ text, onClick, className, type }) => {
+const Button = ({ children, onClick, className, type }) => {
   const [show, setShow] = useState(false);
   const toggleShow = () => setShow(!show);
 
@@ -10,15 +10,14 @@ const Button = ({ text, onClick, className, type }) => {
     toggleShow();
   };
 
-  // need to fix the teRipple effect
-
   return (
-    <TERipple rippleColor="light">
+    <TERipple rippleColor="light" className={`base_btn ${className}`}>
       <button
         onClick={handleClick}
-        className={`base_btn ${className}`}
-        type={type}>
-        {text}
+        className={`px-6 py-2 w-full uppercase `}
+        type={type}
+      >
+        {children}
       </button>
     </TERipple>
   );

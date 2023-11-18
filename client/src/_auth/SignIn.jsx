@@ -30,7 +30,7 @@ const SignIn = () => {
   });
 
   return (
-    <div className="p-10 flex flex-col items-center border border-gray-500 rounded-sm bg-slate-700 w-full max-w-sm shadow-sm shadow-black">
+    <div className="p-10 flex flex-col items-center border border-gray-500 rounded-sm bg-gray-700 w-full max-w-sm shadow-sm shadow-black">
       <h1 className="text-2xl font-bold">Sign In</h1>
       <CgLogIn className="h-14 w-14 text-indigo-500 mt-2" />
       <form onSubmit={submit} className="flex flex-col gap-3 w-full">
@@ -48,28 +48,22 @@ const SignIn = () => {
           icon={<FiLock />}
         />
         <div className="grid grid-cols-2 gap-2">
-          <Button
-            type="submit"
-            text={isAuthPending ? "Singing..." : "Sign in"}
-            className="prime_btn"
-          />
-          <Button
-            type="button"
-            onClick={() => reset()}
-            text="Reset"
-            className="sec_btn"
-          />
+          <Button type="submit" className="prime_btn">
+            {isAuthPending ? "Singing..." : "Sign in"}
+          </Button>
+          <Button type="button" onClick={() => reset()} className="sec_btn">
+            Reset
+          </Button>
         </div>
         <Button
           type="button"
           onClick={handleGenerateRandomUser}
-          text={
-            randomUserId && isUserPending
-              ? "Generating.."
-              : "Generate Random User"
-          }
           className="sec_btn"
-        />
+        >
+          {randomUserId && isUserPending
+            ? "Generating.."
+            : "Generate Random User"}
+        </Button>
       </form>
     </div>
   );
