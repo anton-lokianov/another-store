@@ -10,6 +10,8 @@ const Button = ({ text, onClick, className, type }) => {
     toggleShow();
   };
 
+  // need to fix the teRipple effect
+
   return (
     <TERipple rippleColor="light">
       <button
